@@ -15,14 +15,17 @@ const refs = {
     bodyColor: document.body.style.backgroundColor
 }
 
+
 const starter = () => {
     timerID = setInterval(() => document.body.style.backgroundColor = colors[randomIntegerFromInterval(0, 5)], 1000);
-    refs.stop.addEventListener('click', stopper);
-    refs.start.removeEventListener('click', starter);
+  refs.start.disabled = true;
     
 }
 const stopper = () => {
     clearInterval(timerID);
-    refs.start.addEventListener('click', starter);
+    refs.start.disabled = false;
 }
+
 refs.start.addEventListener('click', starter);
+refs.stop.addEventListener('click', stopper);
+    
